@@ -1,4 +1,4 @@
-package com.jobcall.jobcall;
+package com.jobcall.jobcall.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,9 +16,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.jobcall.jobcall.R;
 
 public class CallActivity extends AppCompatActivity {
     WebView webView;

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JobCall</string>
+    <string name="login_with_github">LOGIN WITH GITHUB</string>
+    <string name="login_with_stack">LOGIN WITH STACK</string>
 </resources>
