@@ -2,6 +2,7 @@ package com.jobcall.jobcall.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.CookieManager;
@@ -27,20 +28,21 @@ public class ExternalLoginActivity extends AppCompatActivity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setMinimumFontSize(40);
         webView.clearCache(true);
-        /*CookieSyncManager.createInstance(this);
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.removeAllCookie();*/
+        // Clear all the cookies
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.setWebViewClient( new WebViewClient() {
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        Log.d("URL", url);
-                        if (url.contains(Constants.SERVER_URL)){
-
-                        }
-                    }
-                }
+        webView.setWebViewClient(new WebViewClient() {
+                                     @Override
+                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                         super.onPageStarted(view, url, favicon);
+                                         Log.d("URL", url);
+                                         if (url.contains(Constants.SERVER_URL + Constants.STACK_SIGNUP) ||
+                                                 url.contains(Constants.SERVER_URL + Constants.GIT_SIGNUP)) {
+                                             Log.d("END", url);
+                                             finish();
+                                         }
+                                     }
+                                 }
         );
         webView.loadUrl(this.getIntent().getStringExtra("url"));
     }

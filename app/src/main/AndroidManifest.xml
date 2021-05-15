@@ -21,16 +21,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCall">
-        <activity android:name=".activity.ExternalLoginActivity"></activity>
+        <receiver
+            android:name=".service.UserDataReciever"
+            android:enabled="true"
+            android:exported="true"></receiver>
 
-        <activity android:name=".activity.CallActivity" />
-        <activity android:name=".activity.UserPreferencesActivity" />
-        <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ExternalLoginActivity" />
+        <activity android:name=".activity.CallActivity" />
+        <activity android:name=".activity.UserPreferencesActivity" />
+        <activity android:name=".activity.HomeActivity">
+            <intent-filter>
+                <action android:name="com.jobcall.jobcall.USER_DATA" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

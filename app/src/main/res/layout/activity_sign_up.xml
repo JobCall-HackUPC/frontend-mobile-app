@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity"
+    tools:context=".activity.HomeActivity"
     android:background="@drawable/gradient_list"
     android:id="@+id/layout"
     >
@@ -44,31 +44,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="158dp"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/buttonStack"
-                android:layout_width="wrap_content"
-                android:layout_height="92dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_corner"
-                android:backgroundTint="#985813"
-                android:text="@string/login_with_stack" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="258dp"
             android:layout_weight="1"
             android:orientation="horizontal">
@@ -78,13 +53,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/buttonGithub"
-                android:layout_width="262dp"
-                android:layout_height="100dp"
-                android:background="@drawable/rounded_corner"
-                android:backgroundTint="#170A83"
-                android:text="@string/login_with_github" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/bt_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <Space
                 android:layout_width="wrap_content"
@@ -92,7 +82,22 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="8dp"
+            android:padding="20dp"
+            android:visibility="gone">
 
+            <ProgressBar
+                android:id="@+id/progress_circular_stack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/black" />
+        </RelativeLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
