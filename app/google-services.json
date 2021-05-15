@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "500374724022",
+    "firebase_url": "https://jobcall-d64f4-default-rtdb.firebaseio.com",
+    "project_id": "jobcall-d64f4",
+    "storage_bucket": "jobcall-d64f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500374724022:android:00e5b1772f0849fa6ef517",
+        "android_client_info": {
+          "package_name": "com.jobcall.jobcall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500374724022-r7sdm4vhuj12qrtdr58kimm04s84ro3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3Q7eDoMji_i438Nn8CEQrVU7okuLL3Tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500374724022-r7sdm4vhuj12qrtdr58kimm04s84ro3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
