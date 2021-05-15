@@ -18,6 +18,10 @@ public class AuthProvider {
             firebaseAuth = FirebaseAuth.getInstance();
         }
 
+
+        public void logout() {
+            firebaseAuth.signOut();
+        }
         public Task<AuthResult> signIn(String email, String password) {
             return firebaseAuth.signInWithEmailAndPassword(email, password);
         }

@@ -3,6 +3,7 @@
     <string name="login_with_github">LOGIN WITH GITHUB</string>
     <string name="disable_with_github">UNLINK GITHUB</string>
     <string name="login_with_stack">LOGIN WITH STACK</string>
+    <string name="unlog_google">DESCONECTAR</string>
     <string name="disable_with_stack">UNLINK STACK</string>
 
     <!-- Permissions -->

@@ -176,8 +176,8 @@ public class API {
                             Intent stack = new Intent("USER_DATA");
                             stack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             stack.putExtra("from", "login");
-                            stack.putExtra("github", responseJson.getJSONObject("github").getString("token"));
-                            stack.putExtra("stack", responseJson.getJSONObject("stack").getString("token"));
+                            stack.putExtra("github", responseJson.getJSONObject("github").getString("userid"));
+                            stack.putExtra("stack", responseJson.getJSONObject("stack").getString("userid"));
                             context.sendBroadcast(stack);
                         } catch (JSONException e) {
                             e.printStackTrace();

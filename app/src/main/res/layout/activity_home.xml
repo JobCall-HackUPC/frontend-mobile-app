@@ -120,6 +120,54 @@
                 app:layout_constraintTop_toTopOf="@+id/buttonGithub" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Space
+                android:id="@+id/space8"
+                android:layout_width="55dp"
+                android:layout_height="52dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonGithub"
+                app:layout_constraintEnd_toStartOf="@+id/buttonGithub"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonGithub" /><![CDATA[
+
+            ="@+id/buttonLogout"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="74dp"
+                android:layout_marginEnd="74dp"
+                android:backgroundTint="#43C0DF"
+                android:text="@string/unlog_google"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            ]]>
+
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/unlog_google" />
+
+            <Space
+                android:id="@+id/space9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/buttonGithub"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonGithub"
+                app:layout_constraintTop_toTopOf="@+id/buttonGithub" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

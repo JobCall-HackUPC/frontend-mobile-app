@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.jobcall.jobcall.R;
+import com.jobcall.jobcall.providers.AuthProvider;
 import com.jobcall.jobcall.service.UserDataReciever;
 import com.jobcall.jobcall.utils.API;
 import com.jobcall.jobcall.utils.Constants;
@@ -22,17 +25,16 @@ public class HomeActivity extends AppCompatActivity {
     Button login_github;
     Button login_stackoverflow;
     ConstraintLayout layout;
+    Button disconectGoogleText;
     UserDataReciever reciever;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         reciever = new UserDataReciever(this);
-
         registerReceiver(reciever, new IntentFilter("USER_DATA"));
         showProgressBar();
         login_github = findViewById(R.id.buttonGithub);
-
 
         login_stackoverflow = findViewById(R.id.buttonStack);
 
@@ -41,6 +43,12 @@ public class HomeActivity extends AppCompatActivity {
 
         API.retrieveUserData(getApplicationContext(), getIntent().getStringExtra("mail")
                 , getIntent().getStringExtra("uid"));
+        disconectGoogleText = findViewById(R.id.buttonLogout);
+        disconectGoogleText.setOnClickListener((v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent i = new Intent(this, SignUpActivity.class);
+            startActivity(i);
+        }));
     }
     public void hideProgressBar() {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -83,8 +91,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onRestart() {
+        super.onRestart();
         API.retrieveUserData(getApplicationContext(), getIntent().getStringExtra("mail")
                 , getIntent().getStringExtra("uid"));
     }
