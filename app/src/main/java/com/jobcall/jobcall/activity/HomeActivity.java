@@ -1,25 +1,19 @@
 package com.jobcall.jobcall.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.jobcall.jobcall.R;
-import com.jobcall.jobcall.providers.AuthProvider;
+import com.jobcall.jobcall.service.CallManagerService;
 import com.jobcall.jobcall.service.UserDataReciever;
 import com.jobcall.jobcall.utils.API;
-import com.jobcall.jobcall.utils.Constants;
 
 public class HomeActivity extends AppCompatActivity {
     Button login_github;
@@ -40,6 +34,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
         layout = (ConstraintLayout)findViewById(R.id.layout);
+
+
+        Intent notifications = new Intent(getApplicationContext(), CallManagerService.class);
+        notifications.putExtra("email", getIntent().getStringExtra("mail"));
+        startService(notifications);
+
 
         API.retrieveUserData(getApplicationContext(), getIntent().getStringExtra("mail")
                 , getIntent().getStringExtra("uid"));

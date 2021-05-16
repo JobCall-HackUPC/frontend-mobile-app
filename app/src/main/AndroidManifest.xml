@@ -13,7 +13,9 @@
     <uses-feature android:name="android.hardware.microphone" />
     <uses-feature android:name="android.hardware.audio.low_latency" />
 
+
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,10 +23,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCall">
-        <receiver
-            android:name=".service.UserDataReciever"
+        <service
+            android:name=".service.CallManagerService"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity android:name=".activity.SignUpActivity">
             <intent-filter>
@@ -34,15 +40,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ExternalLoginActivity" />
-        <activity android:name=".activity.CallActivity" />
+        <activity android:name=".activity.CallActivity" android:hardwareAccelerated="true"></activity>
         <activity android:name=".activity.UserPreferencesActivity" />
         <activity android:name=".activity.HomeActivity">
+
             <intent-filter>
                 <action android:name="com.jobcall.jobcall.USER_DATA" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!-- Defining Services -->
     </application>
 
 </manifest>

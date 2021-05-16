@@ -12,5 +12,7 @@ public  class Constants {
 
     public static final String USER_INFO="/me";
 
-    public  static  final int REQUEST_CODE_GOOGLE = 1;
+    public static final int REQUEST_CODE_GOOGLE = 1;
+
+    public static final String CLIENT_BASE="https://7345220723fd.ngrok.io/webrtc/";
 }

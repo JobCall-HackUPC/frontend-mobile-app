@@ -5,6 +5,9 @@
     <string name="login_with_stack">LOGIN WITH STACK</string>
     <string name="unlog_google">DESCONECTAR</string>
     <string name="disable_with_stack">UNLINK STACK</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
+    <string name="fcm_message">FCM Message</string>
 
     <!-- Permissions -->
     <string name="permissions_no_accepted">Por favor, habilita el acceso a la ubicación desde Ajustes</string>

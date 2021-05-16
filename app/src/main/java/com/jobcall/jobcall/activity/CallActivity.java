@@ -11,6 +11,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +24,21 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.BuildConfig;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jobcall.jobcall.R;
 import com.google.android.material.snackbar.Snackbar;
+import com.jobcall.jobcall.service.CallManagerService;
+
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CallActivity extends AppCompatActivity {
     WebView webView;
@@ -34,12 +47,13 @@ public class CallActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 102;
     private boolean can_go = true;
     FloatingActionButton button;
-
+    TextView timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
         webView = findViewById(R.id.webView);
+        timer = findViewById(R.id.timerView);
         button = findViewById(R.id.answerButton);
         button.setOnClickListener((view) -> joinCall());
     }
@@ -82,18 +96,15 @@ public class CallActivity extends AppCompatActivity {
             }
         }
     }
-
+    CountDownTimer countDownTimer;
     private void joinCall() {
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setSupportZoom(false);
-        webView.getSettings().setAllowFileAccessFromFileURLs(true);
-        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
-
-        webView.getSettings().setSaveFormData(true);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webView.getSettings().setSupportMultipleWindows(true);
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setAllowFileAccess(true);
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -134,9 +145,21 @@ public class CallActivity extends AppCompatActivity {
 
 
         });
-        webView.loadUrl("https://latra:8080/");
+        webView.loadUrl(getIntent().getStringExtra("url"));
+        button.hide();
+        countDownTimer = new CountDownTimer(60*1000, 1000) {
 
+            public void onTick(long millisUntilFinished) {
+                timer.setText(new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+            }
+
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(), "¡Se acabó el tiempo!", Toast.LENGTH_SHORT);
+                finish();
+            }
+        }.start();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -175,4 +198,6 @@ public class CallActivity extends AppCompatActivity {
                 Snackbar.LENGTH_INDEFINITE)
                 .setAction(getString(actionStringId), listener).show();
     }
+
+
 }
