@@ -2,7 +2,7 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">latra.ln.es</domain>
-        <domain includeSubdomains="true">jobcall</domain>
+        <domain includeSubdomains="true">jofre</domain>
         <trust-anchors>
             <certificates src="system"/>
             <certificates src="@raw/my_ca" />
